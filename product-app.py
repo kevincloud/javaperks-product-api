@@ -25,7 +25,7 @@ class DecimalEncoder(json.JSONEncoder):
                 return int(o)
         return super(DecimalEncoder, self).default(o)
 
-@app.route('/all', strict_slashes=False, methods=['GET'])
+@app.route('/checkdb', strict_slashes=False, methods=['GET'])
 def check_db():
     url = "http://customer-api.service." + aws_region + ".consul:5822/customers/CS100312"
     response = requests.get(url)
