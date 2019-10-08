@@ -26,6 +26,13 @@ class DecimalEncoder(json.JSONEncoder):
         return super(DecimalEncoder, self).default(o)
 
 @app.route('/all', strict_slashes=False, methods=['GET'])
+def check_db():
+    url = "http://customer-api.service." + aws_region + ".consul:5822/customers/CS100312"
+    response = requests.get(url)
+
+    return response.content
+
+@app.route('/all', strict_slashes=False, methods=['GET'])
 def get_all():
     table = ddb.Table(tablename)
 
@@ -67,7 +74,7 @@ def category_info(category):
             cats = json.loads(i['Categories'])
             try:
                 x = cats.index(ncat)
-                output.append(i);
+                output.append(i)
             except:
                 found = False
 
