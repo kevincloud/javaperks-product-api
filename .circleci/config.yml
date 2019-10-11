@@ -20,7 +20,7 @@ jobs:
       - run:
           name: Build application Docker image
           command: |
-            docker build --cache-from=javaperks-product-api -t jubican/javaperks-product-api:1.1.2 .
+            docker build --cache-from=javaperks-product-api -t jubican/javaperks-product-api:1.1.3 .
       - run:
           name: Save Docker image layer cache
           command: |
@@ -35,5 +35,5 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-              docker push jubican/javaperks-product-api:1.1.2
+              docker push jubican/javaperks-product-api:1.1.3
             fi

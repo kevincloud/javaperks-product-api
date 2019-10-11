@@ -14,6 +14,9 @@ tablename = os.environ["DDB_TABLE_NAME"]
 bind_port = os.environ["NOMAD_PORT_svc"]
 bind_addr = os.environ["NOMAD_IP_svc"]
 
+print('Address: ' + bind_addr + '\n')
+print('Port: ' + bind_port + '\n')
+
 app = Flask(__name__)
 CORS(app)
 ddb = boto3.resource('dynamodb', aws_access_key_id=access_key, aws_secret_access_key=secret_key, region_name=aws_region)
@@ -128,5 +131,5 @@ def product_image(product_id):
     return image_name
 
 if __name__=='__main__':
-    app.run(host=bind_addr, debug=True, port=bind_port)
+    app.run(host='0.0.0.0', debug=True, port=bind_port)
 
