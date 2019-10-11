@@ -12,7 +12,7 @@ secret_key = os.environ["AWS_SECRET_KEY"]
 aws_region = os.environ["AWS_REGION"]
 tablename = os.environ["DDB_TABLE_NAME"]
 bind_port = os.environ["NOMAD_PORT_svc"]
-bind_addr = os.environ["NOMAD_ADDR_svc"]
+bind_addr = os.environ["NOMAD_IP_svc"]
 
 app = Flask(__name__)
 CORS(app)
