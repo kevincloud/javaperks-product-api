@@ -32,6 +32,10 @@ def check_db():
 
     return response.content
 
+@app.route('/version', strict_slashes=False, methods=['GET'])
+def get_version():
+    return "{ \"api\": \"product-api\", \"version\": \"1.1.4\" }"
+
 @app.route('/all', strict_slashes=False, methods=['GET'])
 def get_all():
     table = ddb.Table(tablename)
