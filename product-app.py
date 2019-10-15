@@ -11,11 +11,6 @@ access_key = os.environ["AWS_ACCESS_KEY"]
 secret_key = os.environ["AWS_SECRET_KEY"]
 aws_region = os.environ["AWS_REGION"]
 tablename = os.environ["DDB_TABLE_NAME"]
-bind_port = os.environ["NOMAD_PORT_svc"]
-bind_addr = os.environ["NOMAD_IP_svc"]
-
-print('Address: ' + bind_addr + '\n')
-print('Port: ' + bind_port + '\n')
 
 app = Flask(__name__)
 CORS(app)
@@ -131,5 +126,5 @@ def product_image(product_id):
     return image_name
 
 if __name__=='__main__':
-    app.run(host='0.0.0.0', debug=True, port=bind_port)
+    app.run(host='0.0.0.0', debug=True, port=80)
 
