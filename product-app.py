@@ -7,11 +7,11 @@ from flask_cors import CORS
 import boto3
 from boto3.dynamodb.conditions import Key, Attr
 
-access_key = os.getenv["AWS_ACCESS_KEY"]
-secret_key = os.getenv["AWS_SECRET_KEY"]
-aws_region = os.getenv["AWS_REGION"]
-tablename = os.getenv["DDB_TABLE_NAME"]
-connect = os.getenv["LOCALHOST_ONLY"]
+access_key = os.getenv("AWS_ACCESS_KEY")
+secret_key = os.getenv("AWS_SECRET_KEY")
+aws_region = os.getenv("AWS_REGION")
+tablename = os.getenv("DDB_TABLE_NAME")
+connect = os.getenv("LOCALHOST_ONLY")
 
 ipaddr = "0.0.0.0"
 if (connect == "true"):
