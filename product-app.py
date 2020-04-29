@@ -135,5 +135,5 @@ def product_image(product_id):
     return image_name
 
 if __name__=='__main__':
-    app.run(host=ipaddr, debug=True, port=80)
+    app.run(host=ipaddr, debug=True, port=5823)
 
