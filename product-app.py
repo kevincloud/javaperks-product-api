@@ -11,6 +11,11 @@ access_key = os.environ["AWS_ACCESS_KEY"]
 secret_key = os.environ["AWS_SECRET_KEY"]
 aws_region = os.environ["AWS_REGION"]
 tablename = os.environ["DDB_TABLE_NAME"]
+connect = os.environ["LOCALHOST_ONLY"]
+
+ipaddr = "0.0.0.0"
+if (connect == "true"):
+    ipaddr = "127.0.0.1"
 
 app = Flask(__name__)
 CORS(app)
@@ -25,12 +30,12 @@ class DecimalEncoder(json.JSONEncoder):
                 return int(o)
         return super(DecimalEncoder, self).default(o)
 
-@app.route('/checkdb', strict_slashes=False, methods=['GET'])
-def check_db():
-    url = "http://customer-api.service." + aws_region + ".consul:5822/customers/CS100312"
-    response = requests.get(url)
+# @app.route('/checkdb', strict_slashes=False, methods=['GET'])
+# def check_db():
+#     url = "http://customer-api.service." + aws_region + ".consul:5822/customers/CS100312"
+#     response = requests.get(url)
 
-    return response.content
+#     return response.content
 
 @app.route('/version', strict_slashes=False, methods=['GET'])
 def get_version():
@@ -130,5 +135,5 @@ def product_image(product_id):
     return image_name
 
 if __name__=='__main__':
-    app.run(host='0.0.0.0', debug=True, port=80)
+    app.run(host=ipaddr, debug=True, port=80)
 
